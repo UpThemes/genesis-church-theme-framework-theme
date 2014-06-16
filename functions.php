@@ -49,17 +49,95 @@ function churchy_setup() {
 	//* Add support for 3-column footer widgets
 	add_theme_support( 'genesis-footer-widgets', 3 );
 
-	//* Enqueue the scripts and styles for Churchy.
-	add_action( 'wp_enqueue_scripts', 'churchy_enqueue_scripts' );
+	add_action( 'genesis_pre', 'churchy_loop_after_content_query' );
+
+	remove_action( 'genesis_loop', 'genesis_do_loop' );
+
+	if( is_page_template('page-templates/homepage.php') ){
+		remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
+		add_action( 'genesis_loop', 'churchy_do_homepage' );
+	} else {
+		//remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
+		//remove_action( 'genesis_sidebar_alt', 'genesis_do_sidebar_alt' );
+		add_action( 'genesis_loop', 'churchy_do_loop' );
+	}
+
+	add_action( 'genesis_before_loop', 'churchy_loop_header' );
 
 	//* Include required files for Churchy.
 	churchy_includes();
+
 }
 add_action( 'genesis_setup', 'churchy_setup', 15 );
 
 /**
-* Sets up Church Theme Framework
+* Set up Church Theme Framework and supporting functionality.
 */
 function churchy_includes(){
+
+	$includes_dir = get_stylesheet_directory() . '/includes';
+
 	require_once( get_stylesheet_directory() . '/framework/framework.php' );
+	require_once( $includes_dir . '/support-wp.php' );
+	require_once( $includes_dir . '/support-ctc.php' );
+	require_once( $includes_dir . '/support-framework.php' );
+	require_once( $includes_dir . '/template-tags.php' );
+	require_once( $includes_dir . '/content-types.php' );
+	require_once( $includes_dir . '/gallery.php' );
+	require_once( $includes_dir . '/images.php' );
+	require_once( $includes_dir . '/loop-after-content.php' );
+	require_once( $includes_dir . '/sidebars.php' );
+}
+
+/**
+* Removes the entry class for top-level page containers.
+*/
+function churchy_remove_entry_class( $post_classes ) {
+
+	foreach( $post_classes as $key => $value ) {
+		if ( $value == 'entry' && is_main_query() ) {
+			unset($post_classes[$key]);
+		}
+	}
+
+	return $post_classes;
+}
+
+/**
+* Get the loop header template.
+*
+* @todo  Move this to a separate file.
+*/
+function churchy_loop_header(){
+
+	// loop-header.php shows title, description, etc. for categories, tags, archives, etc. (not used by single posts)
+	get_template_part( 'loop-header' );
+
+}
+
+/**
+* Get the homepage template.
+*
+* @todo  Move this to a separate file.
+*/
+function churchy_do_homepage(){
+	get_template_part('loop-homepage');
+}
+
+/**
+* Get the loop template.
+*
+* @todo  Move this to a separate file.
+*/
+function churchy_do_loop(){
+	get_template_part( 'loop' );
+}
+
+/**
+* Get the sidebar template.
+*
+* @todo  Move this to a separate file.
+*/
+function churchy_sidebar(){
+	get_sidebar();
 }

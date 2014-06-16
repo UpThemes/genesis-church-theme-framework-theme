@@ -13,7 +13,7 @@ $post_type = get_post_type();
 
 ?>
 
-<footer class="uplifted-entry-footer clearfix">
+<footer class="churchy-entry-footer clearfix">
 
 	<?php
 	// Sermon Buttons
@@ -29,30 +29,30 @@ $post_type = get_post_type();
 		extract( ctfw_sermon_data() );
 
 	?>
-	
+
 	<a class="view-details" href="<?php the_permalink(); ?>">
 				<?php if ( $has_full_text ) : ?>
-					<?php _e( 'Read Full &rarr;', 'uplifted' ); ?>
+					<?php _e( 'Read Full &rarr;', 'churchy' ); ?>
 				<?php else : ?>
-					<?php _ex( 'View Details &rarr;', 'sermon button', 'uplifted' ); ?>
+					<?php _ex( 'View Details &rarr;', 'sermon button', 'churchy' ); ?>
 				<?php endif; ?>
 			</a>
-			
-	<ul class="uplifted-entry-footer-item uplifted-list-buttons">
+
+	<ul class="churchy-entry-footer-item churchy-list-buttons">
 
 		<?php
 
 		// Make sure there is no whitespace between items since they are inline-block
 
 		?>
-		
+
 		<?php
 
 		if ( $video_player || $video_download_url ) :
 			?><li>
 				<a href="<?php the_permalink(); ?><?php if ( $video_player ) : ?>?player=video<?php endif; ?>">
 					<i class="genericon genericon-video"></i>
-					<?php _e( 'Watch', 'uplifted' ); ?>
+					<?php _e( 'Watch', 'churchy' ); ?>
 				</a>
 			</li><?php
 		endif;
@@ -61,16 +61,16 @@ $post_type = get_post_type();
 			?><li>
 				<a href="<?php the_permalink(); ?><?php if ( $audio_player ) : ?>?player=audio<?php endif; ?>">
 					<i class="genericon genericon-audio"></i>
-					<?php _e( 'Listen', 'uplifted' ); ?>
+					<?php _e( 'Listen', 'churchy' ); ?>
 				</a>
 			</li><?php
 		endif;
 
 		if ( $pdf_download_url ) :
 			?><li>
-				<a href="<?php echo esc_url( $pdf_download_url ); ?>" title="<?php echo esc_attr( __( 'Download PDF', 'uplifted' ) ); ?>">
+				<a href="<?php echo esc_url( $pdf_download_url ); ?>" title="<?php echo esc_attr( __( 'Download PDF', 'churchy' ) ); ?>">
 					<i class="genericon genericon-cloud-download"></i>
-					<?php _e( 'PDF', 'uplifted' ); ?>
+					<?php _e( 'PDF', 'churchy' ); ?>
 				</a>
 			</li><?php
 		endif;
@@ -88,17 +88,17 @@ $post_type = get_post_type();
 		extract( ctfw_location_data() );
 
 	?>
-	
-	<a class="view-details" href="<?php the_permalink(); ?>"><?php _e( 'View Details &rarr;', 'uplifted' ); ?></a>
-	
-	<ul class="uplifted-entry-footer-item uplifted-list-buttons">
+
+	<a class="view-details" href="<?php the_permalink(); ?>"><?php _e( 'View Details &rarr;', 'churchy' ); ?></a>
+
+	<ul class="churchy-entry-footer-item churchy-list-buttons">
 
 		<?php
 
 		// Make sure there is no whitespace between items since they are inline-block
 
 		if ( $directions_url ) :
-			?><li><a href="<?php echo esc_url( $directions_url ); ?>" target="_blank"><i class="genericon genericon-location"></i><?php _e( 'Directions', 'uplifted' ); ?></a></li><?php
+			?><li><a href="<?php echo esc_url( $directions_url ); ?>" target="_blank"><i class="genericon genericon-location"></i><?php _e( 'Directions', 'churchy' ); ?></a></li><?php
 		endif;
 
 		?>
@@ -114,17 +114,17 @@ $post_type = get_post_type();
 		extract( ctfw_event_data() );
 
 	?>
-	
-	<a class="view-details" href="<?php the_permalink(); ?>"><?php _e( 'View Details &rarr;', 'uplifted' ); ?></a>
-	
-	<ul class="uplifted-entry-footer-item uplifted-list-buttons">
+
+	<a class="view-details" href="<?php the_permalink(); ?>"><?php _e( 'View Details &rarr;', 'churchy' ); ?></a>
+
+	<ul class="churchy-entry-footer-item churchy-list-buttons">
 
 		<?php
 
 		// Make sure there is no whitespace between items since they are inline-block
 
 		if ( $directions_url ) :
-			?><li><a href="<?php echo esc_url( $directions_url ); ?>" target="_blank"><i class="genericon genericon-location"></i><?php _e( 'Directions', 'uplifted' ); ?></a></li><?php
+			?><li><a href="<?php echo esc_url( $directions_url ); ?>" target="_blank"><i class="genericon genericon-location"></i><?php _e( 'Directions', 'churchy' ); ?></a></li><?php
 		endif;
 
 		?>
@@ -137,8 +137,8 @@ $post_type = get_post_type();
 	?>
 
 		<?php if ( ctfw_has_content() ) : // show only if has bio content ?>
-			<ul class="uplifted-entry-footer-item uplifted-list-buttons">
-				<li><a href="<?php the_permalink(); ?>"><?php _e( 'Read Biography', 'uplifted' ); ?></a></li>
+			<ul class="churchy-entry-footer-item churchy-list-buttons">
+				<li><a href="<?php the_permalink(); ?>"><?php _e( 'Read Biography', 'churchy' ); ?></a></li>
 			</ul>
 		<?php endif; ?>
 
@@ -147,12 +147,12 @@ $post_type = get_post_type();
 	elseif ( 'page' == $post_type && CTFW_THEME_PAGE_TPL_DIR . '/gallery.php' == $post->page_template ) :
 	?>
 
-		<ul class="uplifted-entry-footer-item uplifted-list-buttons">
+		<ul class="churchy-entry-footer-item churchy-list-buttons">
 
 			<li>
 				<a href="<?php the_permalink(); ?>">
 					<i class="genericon genericon-gallery"></i>
-					<?php _e( 'View Gallery', 'uplifted' ); ?>
+					<?php _e( 'View Gallery', 'churchy' ); ?>
 				</a>
 			</li>
 
@@ -166,21 +166,21 @@ $post_type = get_post_type();
 
 	?>
 
-		<div class="uplifted-entry-footer-item clearfix">
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="uplifted-button">
+		<div class="churchy-entry-footer-item clearfix">
+			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="churchy-button">
 
 				<?php
 				// <!--more--> quicktag is used; show "Read More"
 				if ( ctfw_has_more_tag() ) :
 				?>
 
-					<?php _e( 'Read More', 'uplifted' ); ?>
+					<?php _e( 'Read More', 'churchy' ); ?>
 
 				<?php elseif ( ! empty( $post_type_obj->labels->singular_name ) ) :?>
 
 					<?php
 					/* translators: %s is post type name */
-					printf( __( 'View %s', 'uplifted' ), $post_type_obj->labels->singular_name );
+					printf( __( 'View %s', 'churchy' ), $post_type_obj->labels->singular_name );
 					?>
 
 				<?php endif; ?>

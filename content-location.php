@@ -28,38 +28,38 @@ if ( is_singular( get_post_type() ) ) :
 
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'uplifted-entry-full uplifted-location-full' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'churchy-entry-full churchy-location-full' ); ?>>
 
 		<?php get_template_part( 'content-location-header' ); ?>
 
 		<?php if ( $google_map ) : ?>
-			<div class="uplifted-location-full-map">
+			<div class="churchy-location-full-map">
 				<?php echo $google_map; ?>
 			</div>
 		<?php endif; ?>
 
 		<?php if ( $directions_url ) : ?>
-			<div class="uplifted-location-full-direction">
-				<a href="<?php echo esc_url( $directions_url ); ?>" target="_blank" class="uplifted-button">
+			<div class="churchy-location-full-direction">
+				<a href="<?php echo esc_url( $directions_url ); ?>" target="_blank" class="churchy-button">
 					<i class="genericon genericon-location"></i>
-					<?php _ex( 'Get Directions', 'location', 'uplifted' ); ?>
+					<?php _ex( 'Get Directions', 'location', 'churchy' ); ?>
 				</a>
 			</div>
 		<?php endif; ?>
 
 		<?php if ( ctfw_has_content() ) : // might not be any content, so let header sit flush with bottom ?>
-			<div class="uplifted-entry-content uplifted-clearfix">
+			<div class="churchy-entry-content churchy-clearfix">
 
 				<?php the_content(); ?>
 
-				<?php do_action( 'uplifted_after_content' ); ?>
+				<?php do_action( 'churchy_after_content' ); ?>
 
 			</div>
 		<?php endif; ?>
 
 		<?php get_template_part( 'content-footer-full' ); // multipage nav, term lists, "Edit" button, etc. ?>
-		
-	</div> <!-- /uplifted-content-meta -->
+
+	</div> <!-- /churchy-content-meta -->
 
 	</article>
 
@@ -73,20 +73,20 @@ else :
 
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'uplifted-entry-short uplifted-location-short' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'churchy-entry-short churchy-location-short' ); ?>>
 
 		<?php get_template_part( 'content-location-header' ); ?>
 
 		<?php if ( ctfw_has_excerpt() || ctfw_has_more_tag() ) : ?>
-			<div class="uplifted-entry-content uplifted-clearfix">
-				<?php uplifted_short_content(); // output excerpt or post content up until <!--more--> quicktag used ?>
+			<div class="churchy-entry-content churchy-clearfix">
+				<?php churchy_short_content(); // output excerpt or post content up until <!--more--> quicktag used ?>
 			</div>
 		<?php endif; ?>
 
 		<?php get_template_part( 'content-footer-short' ); // show appropriate button(s) ?>
-  
-  </div> <!-- /uplifted-content-meta -->
-  
+
+  </div> <!-- /churchy-content-meta -->
+
 	</article>
 
 <?php endif; ?>

@@ -19,19 +19,19 @@ if ( is_singular( get_post_type() ) ) :
 
 	<?php get_template_part( 'content-person-header' ); ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'uplifted-entry-full uplifted-person-full' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'churchy-entry-full churchy-person-full' ); ?>>
 
-		<div class="uplifted-entry-content uplifted-clearfix">
+		<div class="churchy-entry-content churchy-clearfix">
 
 			<?php the_content(); ?>
 
-			<?php do_action( 'uplifted_after_content' ); ?>
+			<?php do_action( 'churchy_after_content' ); ?>
 
 		</div>
 
 		<?php get_template_part( 'content-footer-full' ); // multipage nav, term lists, "Edit" button, etc. ?>
 
-	</div> <!-- /uplifted-content-meta -->
+	</div> <!-- /churchy-content-meta -->
 
 	</article>
 
@@ -45,13 +45,13 @@ else :
 
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'uplifted-entry-short uplifted-person-short' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'churchy-entry-short churchy-person-short' ); ?>>
 
 		<?php get_template_part( 'content-person-header' ); ?>
 
 		<!-- <?php get_template_part( 'content-footer-short' ); // show appropriate button(s) ?> -->
 
-	</div> <!-- /uplifted-content-meta -->
+	</div> <!-- /churchy-content-meta -->
 
 	</article>
 

@@ -8,11 +8,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'uplifted-entry-full uplifted-attachment-full' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'churchy-entry-full churchy-attachment-full' ); ?>>
 
 	<?php get_template_part( 'content-attachment-header' ); ?>
 
-	<div class="uplifted-entry-attachment">
+	<div class="churchy-entry-attachment">
 
 		<?php
 		// Image is displayed
@@ -37,26 +37,26 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		else :
 		?>
 
-			<a href="<?php echo esc_url( ctfw_force_download_url( wp_get_attachment_url( $post->ID ) ) ); ?>" class="uplifted-button uplifted-attachment-download">
+			<a href="<?php echo esc_url( ctfw_force_download_url( wp_get_attachment_url( $post->ID ) ) ); ?>" class="churchy-button churchy-attachment-download">
 				<?php
 				$filetype = wp_check_filetype( wp_get_attachment_url( $post->ID ) );
 				if ( $filetype['ext'] ) {
 					/* translators: %s is file extension */
-					printf( __( 'Download %s', 'uplifted' ), strtoupper( $filetype['ext'] ) );
+					printf( __( 'Download %s', 'churchy' ), strtoupper( $filetype['ext'] ) );
 				}
 				?>
 			</a>
 
 		<?php endif; ?>
 
-	</div> <!-- /uplifted-entry-attachment -->
+	</div> <!-- /churchy-entry-attachment -->
 
 	<?php if ( ctfw_has_content() ) : ?>
-	<div class="uplifted-entry-content uplifted-clearfix">
+	<div class="churchy-entry-content churchy-clearfix">
 
 		<?php the_content(); ?>
 
-		<?php do_action( 'uplifted_after_content' ); ?>
+		<?php do_action( 'churchy_after_content' ); ?>
 
 	</div>
 	<?php endif; ?>

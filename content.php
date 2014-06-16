@@ -21,12 +21,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * For example, the Sermons page template can loop sermons after the content.
  *
  * 		// Query specific posts to loop
- * 		function uplifted_template_name_loop_after_content() { // template_name being something like 'sermons'
+ * 		function churchy_template_name_loop_after_content() { // template_name being something like 'sermons'
  * 	 		return new WP_Query();
  *    	}
  *
  *		// Make query available via filter
- *		add_filter( 'uplifted_loop_after_content_query', 'uplifted_template_name_loop_after_content' );
+ *		add_filter( 'churchy_loop_after_content_query', 'churchy_template_name_loop_after_content' );
  *
  *		// Load main template to show the page
  *		locate_template( 'index.php', true );
@@ -34,12 +34,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Other content can similarly be shown in this way via a custom page template:
  *
  * 		// Custom content output
- * 		function uplifted_template_name_after_content() { // template_name being something like 'sermons'
+ * 		function churchy_template_name_after_content() { // template_name being something like 'sermons'
  * 			echo 'whatever';
  * 		}
  *
  * 		// Make content available via action
- *		add_action( 'uplifted_after_content', 'uplifted_template_name_after_content' );
+ *		add_action( 'churchy_after_content', 'churchy_template_name_after_content' );
  *
  *		// Load main template to show the page
  *		locate_template( 'index.php', true );
@@ -47,19 +47,23 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( is_singular( get_post_type() ) ) :
 
+	if( is_page_template() ){
+		add_filter( 'post_class', 'churchy_remove_entry_class' );
+	}
+
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'uplifted-entry-full' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'churchy-entry-full' ); ?>>
 
 		<?php if ( ctfw_has_title() ) : // do not repeat title if already shown via header-banner.php ?>
-			<h1 class="uplifted-entry-title uplifted-main-title"><?php uplifted_title_paged(); // show with (Page #) if multipage ?></h1>
+			<h1 class="churchy-entry-title churchy-main-title"><?php churchy_title_paged(); // show with (Page #) if multipage ?></h1>
 		<?php endif; ?>
 
-		<div class="uplifted-entry-content uplifted-clearfix">
+		<div class="churchy-entry-content churchy-clearfix">
 
 			<?php the_content(); ?>
 
-			<?php do_action( 'uplifted_after_content' ); ?>
+			<?php do_action( 'churchy_after_content' ); ?>
 
 		</div>
 
@@ -77,13 +81,13 @@ else :
 
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'uplifted-entry-short' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'churchy-entry-short' ); ?>>
 
-		<h1 class="uplifted-entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+		<h1 class="churchy-entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 
 		<?php if ( ctfw_has_excerpt() || ctfw_has_more_tag() ) : ?>
-			<div class="uplifted-entry-content uplifted-clearfix">
-				<?php uplifted_short_content(); // output excerpt or post content up until <!--more--> quicktag used ?>
+			<div class="churchy-entry-content churchy-clearfix">
+				<?php churchy_short_content(); // output excerpt or post content up until <!--more--> quicktag used ?>
 			</div>
 		<?php endif; ?>
 

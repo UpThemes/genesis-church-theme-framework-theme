@@ -13,41 +13,41 @@ extract( ctfw_location_data() );
 ?>
 
 <?php if ( has_post_thumbnail() ) : ?>
-	<div class="uplifted-entry-image">
-		<?php uplifted_post_image(); ?>
+	<div class="churchy-entry-image">
+		<?php churchy_post_image(); ?>
 	</div>
 <?php endif; ?>
 
-<div class="uplifted-content-meta">
+<div class="churchy-content-meta">
 
-	<header class="uplifted-entry-header clearfix">
+	<header class="churchy-entry-header clearfix">
 
-		<div class="uplifted-entry-title-meta">
+		<div class="churchy-entry-title-meta">
 
 			<?php if ( ctfw_has_title() ) : ?>
-				<h1 class="uplifted-entry-title<?php if ( is_singular( get_post_type() ) ) : ?> uplifted-main-title<?php endif; ?>">
-					<?php uplifted_post_title(); // will be linked on short ?>
+				<h1 class="churchy-entry-title<?php if ( is_singular( get_post_type() ) ) : ?> churchy-main-title<?php endif; ?>">
+					<?php churchy_post_title(); // will be linked on short ?>
 				</h1>
 			<?php endif; ?>
 
-			<ul class="uplifted-entry-meta">
+			<ul class="churchy-entry-meta">
 
 				<?php if ( $address ) : ?>
-					<li class="uplifted-location-address">
+					<li class="churchy-location-address">
 						<i class="genericon genericon-location"></i>
 						<?php echo nl2br( wptexturize( $address ) ); ?>
 					</li>
 				<?php endif; ?>
 
 				<?php if ( $phone ) : ?>
-					<li class="uplifted-location-phone">
+					<li class="churchy-location-phone">
 						<i class="genericon genericon-phone"></i>
 						<?php echo esc_html( $phone ); ?>
 					</li>
 				<?php endif; ?>
 
 				<?php if ( $times ) : ?>
-					<li class="uplifted-location-times">
+					<li class="churchy-location-times">
 						<i class="genericon genericon-time"></i>
 						<?php echo nl2br( wptexturize( $times ) ); ?>
 					</li>
@@ -55,6 +55,6 @@ extract( ctfw_location_data() );
 
 			</ul>
 
-		</div> <!-- /uplifted-entry-title-meta -->
+		</div> <!-- /churchy-entry-title-meta -->
 
 	</header>

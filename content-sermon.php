@@ -56,15 +56,15 @@ if ( is_singular( get_post_type() ) ) :
 	// Scroll to player requested, if any
 	if ( $player_request ) {
 
-		add_action( 'wp_footer', 'uplifted_sermon_player_scroll' );
+		add_action( 'wp_footer', 'churchy_sermon_player_scroll' );
 
-		function uplifted_sermon_player_scroll() {
+		function churchy_sermon_player_scroll() {
 
 echo <<< HTML
 <script>
 jQuery(document).ready(function($) {
 	$.smoothScroll({
-		scrollTarget: '#uplifted-sermon-full-media',
+		scrollTarget: '#churchy-sermon-full-media',
 		offset: -60,
 		easing: 'swing',
 		speed: 800
@@ -79,35 +79,35 @@ HTML;
 
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'uplifted-entry-full uplifted-sermon-full' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'churchy-entry-full churchy-sermon-full' ); ?>>
 
 		<!-- a working Header containing Sermon meta, will be changing -->
 
-		<header class="uplifted-entry-header">
+		<header class="churchy-entry-header">
 
-			<div class="uplifted-entry-title-meta">
+			<div class="churchy-entry-title-meta">
 
 				<?php if ( ctfw_has_title() ) : ?>
-					<h1 class="uplifted-entry-title<?php if ( is_singular( get_post_type() ) ) : ?> uplifted-main-title<?php endif; ?>">
-						<?php uplifted_post_title(); // will be linked on short ?>
+					<h1 class="churchy-entry-title<?php if ( is_singular( get_post_type() ) ) : ?> churchy-main-title<?php endif; ?>">
+						<?php churchy_post_title(); // will be linked on short ?>
 					</h1>
 				<?php endif; ?>
 
-				<ul class="uplifted-entry-meta">
+				<ul class="churchy-entry-meta">
 
-					<li class="uplifted-entry-date uplifted-content-icon">
+					<li class="churchy-entry-date churchy-content-icon">
 						<time datetime="<?php esc_attr( the_time( 'c' ) ); ?>"><?php ctfw_post_date(); ?></time>
 					</li>
 
-					<?php if ( $speakers = get_the_term_list( $post->ID, 'ctc_sermon_speaker', '', __( ', ', 'uplifted' ) ) ) : ?>
-						<li class="uplifted-entry-byline uplifted-sermon-speaker uplifted-content-icon">
+					<?php if ( $speakers = get_the_term_list( $post->ID, 'ctc_sermon_speaker', '', __( ', ', 'churchy' ) ) ) : ?>
+						<li class="churchy-entry-byline churchy-sermon-speaker churchy-content-icon">
 							<?php echo $speakers; ?>
 						</li>
 					<?php endif; ?>
 
 				</ul>
 
-			</div> <!-- /uplifted-entry-title-meta -->
+			</div> <!-- /churchy-entry-title-meta -->
 
 
 
@@ -117,26 +117,26 @@ HTML;
 			if ( ( $show_player || $show_buttons ) && ! post_password_required() ) :
 			?>
 
-				<div id="uplifted-sermon-full-media">
+				<div id="churchy-sermon-full-media">
 
 					<?php
 					// Show player if have video or audio player
 					if ( $show_player ) : ?>
 
-						<div id="uplifted-sermon-full-player">
+						<div id="churchy-sermon-full-player">
 
 							<?php if ( 'video' == $show_player ) : ?>
-							<div id="uplifted-sermon-full-video-player">
+							<div id="churchy-sermon-full-video-player">
 								<?php echo $video_player; ?>
 							</div>
 							<?php endif; ?>
 
 							<?php if ( 'audio' == $show_player ) : ?>
-							<div id="uplifted-sermon-full-audio-player">
+							<div id="churchy-sermon-full-audio-player">
 
 								<?php if ( has_post_thumbnail() ) : ?>
-									<div class="uplifted-entry-image">
-										<?php uplifted_post_image(); ?>
+									<div class="churchy-entry-image">
+										<?php churchy_post_image(); ?>
 									</div>
 								<?php endif; ?>
 
@@ -145,7 +145,7 @@ HTML;
 							</div>
 							<?php endif; ?>
 
-						</div><!-- /uplifted-sermon-full-player -->
+						</div><!-- /churchy-sermon-full-player -->
 
 					<?php endif; ?>
 
@@ -154,28 +154,28 @@ HTML;
 					if ( $show_buttons ) :
 					?>
 
-					<div class="uplifted-list-buttons-container clearfix">
+					<div class="churchy-list-buttons-container clearfix">
 
-						<ul class="uplifted-list-buttons">
+						<ul class="churchy-list-buttons">
 
 							<?php
 
 							// Make sure there is no whitespace between items since they are inline-block
 
 							if ( $video_player && 'audio' == $show_player ) : // have video player but currently showing audio
-								?><li id="uplifted-sermon-full-video-player-button" class="media-toggle">
+								?><li id="churchy-sermon-full-video-player-button" class="media-toggle">
 									<a href="?player=video">
 										<i class="genericon genericon-video"></i>
-										<?php _e( 'Show Video Player', 'uplifted' ); ?>
+										<?php _e( 'Show Video Player', 'churchy' ); ?>
 									</a>
 								</li><?php
 							endif;
 
 							if ( $audio_player && 'video' == $show_player ) : // have audio player but currently showing video
-								?><li id="uplifted-sermon-full-audio-player-button" class="media-toggle">
+								?><li id="churchy-sermon-full-audio-player-button" class="media-toggle">
 									<a href="?player=audio">
 										<i class="genericon genericon-audio"></i>
-										<?php _e( 'Show Audio Player', 'uplifted' ); ?>
+										<?php _e( 'Show Audio Player', 'churchy' ); ?>
 									</a>
 								</li><?php
 							endif;
@@ -183,35 +183,35 @@ HTML;
 
 						</ul>
 
-						<ul class="uplifted-list-buttons">
+						<ul class="churchy-list-buttons">
 
 							<?php
 
 							// Make sure there is no whitespace between items since they are inline-block
 
 							if ( $video_download_url ) :
-								?><li id="uplifted-sermon-full-video-download-button" class="media-download">
-									<a href="<?php echo esc_url( $video_download_url ); ?>" title="<?php echo esc_attr( __( 'Download Video', 'uplifted' ) ); ?>">
+								?><li id="churchy-sermon-full-video-download-button" class="media-download">
+									<a href="<?php echo esc_url( $video_download_url ); ?>" title="<?php echo esc_attr( __( 'Download Video', 'churchy' ) ); ?>">
 										<i class="genericon genericon-cloud-download"></i>
-										<?php _e( 'Save Video', 'uplifted' ); ?>
+										<?php _e( 'Save Video', 'churchy' ); ?>
 									</a>
 								</li><?php
 							endif;
 
 							if ( $audio_download_url ) :
-								?><li id="uplifted-sermon-full-audio-download-button" class="media-download">
-									<a href="<?php echo esc_url( $audio_download_url ); ?>" title="<?php echo esc_attr( __( 'Download Audio', 'uplifted' ) ); ?>">
+								?><li id="churchy-sermon-full-audio-download-button" class="media-download">
+									<a href="<?php echo esc_url( $audio_download_url ); ?>" title="<?php echo esc_attr( __( 'Download Audio', 'churchy' ) ); ?>">
 										<i class="genericon genericon-cloud-download"></i>
-										<?php _e( 'Save Audio', 'uplifted' ); ?>
+										<?php _e( 'Save Audio', 'churchy' ); ?>
 									</a>
 								</li><?php
 							endif;
 
 							if ( $pdf_download_url ) :
-								?><li id="uplifted-sermon-full-pdf-download-button" class="media-download">
-									<a href="<?php echo esc_url( $pdf_download_url ); ?>" title="<?php echo esc_attr( __( 'Download PDF', 'uplifted' ) ); ?>">
+								?><li id="churchy-sermon-full-pdf-download-button" class="media-download">
+									<a href="<?php echo esc_url( $pdf_download_url ); ?>" title="<?php echo esc_attr( __( 'Download PDF', 'churchy' ) ); ?>">
 										<i class="genericon genericon-cloud-download"></i>
-										<?php _e( 'Save PDF', 'uplifted' ); ?>
+										<?php _e( 'Save PDF', 'churchy' ); ?>
 									</a
 								></li><?php
 							endif;
@@ -222,9 +222,9 @@ HTML;
 
 						<?php endif; ?>
 
-					</div><!-- /uplifted-list-buttons-container -->
+					</div><!-- /churchy-list-buttons-container -->
 
-				</div><!-- /uplifted-sermon-full-media -->
+				</div><!-- /churchy-sermon-full-media -->
 
 			<?php endif; ?> <!-- end full-media if statement -->
 
@@ -237,13 +237,13 @@ HTML;
 
 				<?php if ( ctfw_has_content() || ctfw_has_excerpt() ) : ?>
 
-					<div class="uplifted-entry-content clearfix">
+					<div class="churchy-entry-content clearfix">
 
 						<?php the_content(); ?>
 
 						<?php if ( ! ctfw_has_content() ) the_excerpt(); // if no content, show excerpt if there is one ?>
 
-						<?php do_action( 'uplifted_after_content' ); ?>
+						<?php do_action( 'churchy_after_content' ); ?>
 
 					</div>
 
@@ -253,52 +253,52 @@ HTML;
 
 			<div class="single-sermon-meta-sidebar large-4 column">
 
-				<div class="uplifted-entry-title-meta">
+				<div class="churchy-entry-title-meta">
 
 					<?php if ( ctfw_has_title() ) : ?>
 						<h3>
-							<?php uplifted_post_title(); // will be linked on short ?>
+							<?php churchy_post_title(); // will be linked on short ?>
 						</h3>
 					<?php endif; ?>
 
-					<ul class="uplifted-entry-meta">
+					<ul class="churchy-entry-meta">
 
-						<li class="uplifted-entry-date">
+						<li class="churchy-entry-date">
 							<i class="genericon genericon-month"></i>
 							<time datetime="<?php esc_attr( the_time( 'c' ) ); ?>"><?php ctfw_post_date(); ?></time>
 						</li>
 
-						<?php if ( $speakers = get_the_term_list( $post->ID, 'ctc_sermon_speaker', '', __( ', ', 'uplifted' ) ) ) : ?>
-							<li class="uplifted-entry-byline uplifted-sermon-speaker">
+						<?php if ( $speakers = get_the_term_list( $post->ID, 'ctc_sermon_speaker', '', __( ', ', 'churchy' ) ) ) : ?>
+							<li class="churchy-entry-byline churchy-sermon-speaker">
 								<i class="genericon genericon-user"></i>
 								<?php echo $speakers; ?>
 							</li>
 						<?php endif; ?>
 
-						<?php if ( $topics = get_the_term_list( $post->ID, 'ctc_sermon_topic', '', __( ', ', 'uplifted' ) ) ) : ?>
-							<li class="uplifted-entry-category uplifted-sermon-topic">
+						<?php if ( $topics = get_the_term_list( $post->ID, 'ctc_sermon_topic', '', __( ', ', 'churchy' ) ) ) : ?>
+							<li class="churchy-entry-category churchy-sermon-topic">
 								<i class="genericon genericon-category"></i>
 								<?php echo $topics; ?>
 							</li>
 						<?php endif; ?>
 
-						<?php if ( $books = get_the_term_list( $post->ID, 'ctc_sermon_book', '', __( ', ', 'uplifted' ) ) ) : ?>
-							<li class="uplifted-entry-category uplifted-sermon-book">
+						<?php if ( $books = get_the_term_list( $post->ID, 'ctc_sermon_book', '', __( ', ', 'churchy' ) ) ) : ?>
+							<li class="churchy-entry-category churchy-sermon-book">
 								<i class="genericon genericon-book"></i>
 								<?php echo $books; ?>
 							</li>
 						<?php endif; ?>
 
-						<?php if ( uplifted_show_comments() ) : ?>
-							<li class="uplifted-entry-comments-link">
+						<?php if ( churchy_show_comments() ) : ?>
+							<li class="churchy-entry-comments-link">
 								<i class="genericon genericon-comment"></i>
-								<?php uplifted_comments_link(); ?>
+								<?php churchy_comments_link(); ?>
 							</li>
 						<?php endif; ?>
 
 					</ul>
 
-				</div> <!-- /uplifted-entry-title-meta -->
+				</div> <!-- /churchy-entry-title-meta -->
 
 			</div><!-- /single-sermon-meta -->
 
@@ -316,19 +316,19 @@ else :
 
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'uplifted-entry-short uplifted-sermon-short' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'churchy-entry-short churchy-sermon-short' ); ?>>
 
 		<?php get_template_part( 'content-sermon-header' ); ?>
 
 		<?php if ( ctfw_has_excerpt() || ctfw_has_more_tag() ) : ?>
-			<div class="uplifted-entry-content clearfix">
-				<?php uplifted_short_content(); // output excerpt or post content up until <!--more--> quicktag used ?>
+			<div class="churchy-entry-content clearfix">
+				<?php churchy_short_content(); // output excerpt or post content up until <!--more--> quicktag used ?>
 			</div>
 		<?php endif; ?>
 
 		<?php get_template_part( 'content-footer-short' ); // show appropriate button(s) ?>
 
-		</div> <!-- /uplifted-content-meta -->
+		</div> <!-- /churchy-content-meta -->
 
 	</article>
 

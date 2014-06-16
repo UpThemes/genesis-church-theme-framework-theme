@@ -16,8 +16,8 @@ if ( is_singular( 'post' ) ) {
 
 	// Blog Tags
 	/* translators: used between list items, there is a space after the comma */
-	if ( $list = get_the_tag_list( '', __( ', ', 'uplifted' ) ) ) {
-		$term_lists[] = sprintf( __( 'Tagged with %s', 'uplifted' ), $list );
+	if ( $list = get_the_tag_list( '', __( ', ', 'churchy' ) ) ) {
+		$term_lists[] = sprintf( __( 'Tagged with %s', 'churchy' ), $list );
 	}
 
 }
@@ -27,14 +27,14 @@ elseif ( is_singular( 'ctc_sermon' ) ) {
 
 	// Series
 	/* translators: used between list items, there is a space after the comma */
-	if ( $list = get_the_term_list( $post->ID, 'ctc_sermon_series', '', __( ', ', 'uplifted' ) ) ) {
-		$term_lists[] = sprintf( __( 'Series: %s', 'uplifted' ), $list );
+	if ( $list = get_the_term_list( $post->ID, 'ctc_sermon_series', '', __( ', ', 'churchy' ) ) ) {
+		$term_lists[] = sprintf( __( 'Series: %s', 'churchy' ), $list );
 	}
 
 	// Sermon Tags
 	/* translators: used between list items, there is a space after the comma */
-	if ( $list = get_the_term_list( $post->ID, 'ctc_sermon_tag', '', __( ', ', 'uplifted' ) ) ) {
-		$term_lists[] = sprintf( __( 'Tagged with %s', 'uplifted' ), $list );
+	if ( $list = get_the_term_list( $post->ID, 'ctc_sermon_tag', '', __( ', ', 'churchy' ) ) ) {
+		$term_lists[] = sprintf( __( 'Tagged with %s', 'churchy' ), $list );
 	}
 
 }
@@ -46,16 +46,16 @@ elseif ( is_singular( 'ctc_sermon' ) ) {
 if ( ( ctfw_is_multipage() && ! post_password_required() ) || ! empty( $term_lists ) || ctfw_can_edit_post() ) :
 ?>
 
-	<footer class="uplifted-entry-footer clearfix">
+	<footer class="churchy-entry-footer clearfix">
 
 		<?php
 		// "Pages: 1 2 3" when <!--nextpage--> used
 		if ( ctfw_is_multipage() && ! post_password_required() ) :
 		?>
-			<div class="uplifted-entry-footer-item">
+			<div class="churchy-entry-footer-item">
 				<?php
 				wp_link_pages( array(
-					'before'	=> '<div class="uplifted-entry-page-nav"><span>' . __( 'Pages:', 'uplifted' ) . '</span>',
+					'before'	=> '<div class="churchy-entry-page-nav"><span>' . __( 'Pages:', 'churchy' ) . '</span>',
 					'after'		=> '</div>'
 				) );
 				?>
@@ -67,10 +67,10 @@ if ( ( ctfw_is_multipage() && ! post_password_required() ) || ! empty( $term_lis
 		if ( ! empty( $term_lists ) ) :
 		?>
 
-			<div class="uplifted-entry-footer-item">
+			<div class="churchy-entry-footer-item">
 
 				<?php foreach ( $term_lists as $term_list ) : ?>
-				<div class="uplifted-entry-footer-terms">
+				<div class="churchy-entry-footer-terms">
 					<?php echo $term_list; ?>
 				</div>
 				<?php endforeach; ?>
@@ -84,14 +84,14 @@ if ( ( ctfw_is_multipage() && ! post_password_required() ) || ! empty( $term_lis
 		if ( ctfw_can_edit_post() ) :
 		?>
 
-			<div class="uplifted-entry-footer-item">
+			<div class="churchy-entry-footer-item">
 
 				<?php
 				$post_type_obj = get_post_type_object( $post->post_type );
 				/* translators: %1$s is icon, %1$s is post type singular name */
 				edit_post_link(
 					sprintf(
-						__( ' Edit %1$s', 'uplifted' ), // Link text format
+						__( ' Edit %1$s', 'churchy' ), // Link text format
 						$post_type_obj->labels->singular_name // Post type name
 					)
 				);
