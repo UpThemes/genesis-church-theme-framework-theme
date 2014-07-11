@@ -49,21 +49,6 @@ function churchy_setup() {
 	//* Add support for 3-column footer widgets
 	add_theme_support( 'genesis-footer-widgets', 3 );
 
-	add_action( 'genesis_pre', 'churchy_loop_after_content_query' );
-
-	remove_action( 'genesis_loop', 'genesis_do_loop' );
-
-	if( is_page_template('page-templates/homepage.php') ){
-		remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
-		add_action( 'genesis_loop', 'churchy_do_homepage' );
-	} else {
-		//remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
-		//remove_action( 'genesis_sidebar_alt', 'genesis_do_sidebar_alt' );
-		add_action( 'genesis_loop', 'churchy_do_loop' );
-	}
-
-	add_action( 'genesis_before_loop', 'churchy_loop_header' );
-
 	//* Include required files for Churchy.
 	churchy_includes();
 
@@ -95,7 +80,7 @@ function churchy_includes(){
 function churchy_remove_entry_class( $post_classes ) {
 
 	foreach( $post_classes as $key => $value ) {
-		if ( $value == 'entry' && is_main_query() ) {
+		if ( $value == 'entry' && is_main_query() && is_page_template() ) {
 			unset($post_classes[$key]);
 		}
 	}
